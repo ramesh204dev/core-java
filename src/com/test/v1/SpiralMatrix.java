@@ -48,6 +48,8 @@ public class SpiralMatrix {
 		System.out.println(Arrays.toString(createSprialFromMatrix(matrix)));
 		
 		System.out.println(Arrays.toString(createSprialFromMatrix(matrix1)));
+		
+		System.out.println(Arrays.toString(printMatrixToSprialArray(matrix1)));
 	}
 	/*
 	 * his is a very simple and easy to understand solution. I traverse right and increment rowBegin, then traverse down and decrement colEnd, then I traverse left and decrement rowEnd, and finally I traverse up and increment colBegin.
@@ -92,6 +94,45 @@ The only tricky part is that when I traverse left or up I have to check whether 
 			}
 		}
 		
+		return result;
+	}
+	
+	private static int[] printMatrixToSprialArray(int[][] matrix) {
+		int n = matrix.length;
+		int[] result = new int[n*n];
+		int k=0;
+		
+		int rowBegin = 0;
+		int rowEnd = matrix.length-1;
+		int colBegin =0;
+		int colEnd = matrix[0].length-1;
+		
+		while(rowBegin<=rowEnd && colBegin<=colEnd) { 
+		for(int i=colBegin; i<=colEnd;i++) {
+			result[k++] = matrix[rowBegin][i];
+		}
+		rowBegin++;
+		
+		for(int i=rowBegin;i<=rowEnd;i++) {
+			result[k++] = matrix[i][colEnd];
+		}
+		colEnd--;
+		
+		if(rowBegin<=rowEnd) {
+		for(int i=colEnd;i>=colBegin;i--) {
+			result[k++] = matrix[rowEnd][i];
+		}
+		rowEnd--;
+		}
+		
+		if(colBegin<=colEnd) {
+		for(int i=rowEnd;i>=rowBegin;i--) {
+			result[k++] = matrix[i][colBegin];
+		}
+		colBegin++;
+		}
+		
+		}
 		return result;
 	}
 }
