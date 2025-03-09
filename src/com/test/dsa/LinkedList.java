@@ -249,6 +249,36 @@ public class LinkedList {
 		return;
 	}
 	
+//	   Initialize three pointers:
+//		prev = NULL (to track the previous node)
+//		current = head (starting point)
+//		next = NULL (to store the next node temporarily)
+//		Iterate through the list:
+//		Store next = current->next (save next node).
+//		Reverse the link: current->next = prev.
+//		Move prev and current forward (prev = current, current = next).
+	public void reverse() {
+		if(head==null) return;
+		
+		Node curr = head, prev = null,next;
+		while(curr.next!=null) {
+			 // Store next
+			next  = curr.next; 
+			
+			//reverse the link 
+			curr.next = prev;
+			
+			//update prev, curre
+			prev = curr;
+			curr = next;
+		}
+		//reached last node 
+		curr.next = prev;
+		head = curr;
+		return;
+		
+	}
+	
 	public static void main(String[] args) {
 		LinkedList linkedList = new LinkedList();
 		linkedList.add(2);
@@ -316,6 +346,13 @@ public class LinkedList {
 		
 		newList.addNodeAtBegining(1);
 		newList.deleteNodeAtEnding();
+		newList.add(3);
+		newList.add(4);
+		newList.add(5);
+		newList.add(6);
+		newList.display();
+		
+		newList.reverse();
 		newList.display();
 		
 //		linkedList.delete(3);

@@ -4,11 +4,34 @@ public class MaximumSubArray {
 	public static void main(String[] args) {
 		int[] nums = {2,3,-8,7,-1,2,3};
 		
+		int[] nums1 = {-2,-3,1,4};
 	
-		System.out.println(findMaxOfSubArrayKadneAlgo(nums));
-		
+		System.out.println(findMaxOfSubArrayKadneAlgo(nums1));
+		System.out.println(findMaxSubArray(nums1));
 		
 	}
+	
+	//practice version
+	private static int findMaxSubArray(int[] nums) {
+		int max =Integer.MIN_VALUE;
+		int curSum = nums[0];
+		for(int i=1;i<nums.length;i++) {
+			 curSum += nums[i];
+			 max = Math.max(max, curSum);
+			 if(curSum<0) {
+				 curSum = 0;
+			 }
+			 
+		}
+		
+		return max;
+	}
+	
+	
+	
+	
+	
+	
 	
 	private static int findMaxOfSubArrays(int[] nums) {
 	 int maxSum = nums[0];

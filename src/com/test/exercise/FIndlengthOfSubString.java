@@ -174,5 +174,8 @@ public class FIndlengthOfSubString {
 		return maxLenght;
 	}
 	
+	
+	// ababcdeab
+	
 }
 
