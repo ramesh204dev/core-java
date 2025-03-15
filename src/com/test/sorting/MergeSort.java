@@ -57,9 +57,69 @@ public class MergeSort {
 	}
 	
 	public static void main(String[] args) {
-		int[] nums = {2,-4,9,1,8,7,3,5};
-		divide(nums,0,nums.length-1);
+		int[] nums = {2,-4,9,1,8,7,-3,5};
+//		divide(nums,0,nums.length-1);
 		
+		divideHelper(nums, 0, nums.length-1);
 		System.out.println(Arrays.toString(nums));
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private static void divideHelper(int[] arr,int si,int ei) {
+		if(si>=ei)
+			return;
+		
+		int mid = si+(ei-si)/2;
+		
+		divideHelper(arr, si, mid);
+		divideHelper(arr, mid+1, ei);
+		
+		mergeHelper(arr,si,ei,mid);
+		
+	}
+	
+	private static void mergeHelper(int[] arr,int si,int ei,int mid) {
+		int[] temp = new int[ei-si+1];
+		int idx1 = si;
+		int idx2 = mid+1;
+		int x =0;
+		
+		while(idx1<=mid && idx2<=ei) {
+			if(arr[idx1]<=arr[idx2]) 
+				temp[x++]=arr[idx1++];
+			else
+				temp[x++]=arr[idx2++];
+		}
+		
+		
+		while(idx1<=mid)
+			temp[x++]=arr[idx1++];
+		
+		while(idx2<=ei)
+			temp[x++]=arr[idx2++];
+		
+		
+		for(int i=0,j=si;i<temp.length;i++,j++)
+			arr[j] = temp[i];
+		
+	}
+	
+	
+	
+	
 }
