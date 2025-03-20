@@ -279,6 +279,33 @@ public class LinkedList {
 		
 	}
 	
+	//0th indexed
+	public void swapkthNode(int k) {
+		Node temp = head;
+		int length =0;
+		//find out total number of nodes in given linkedList
+		while(temp.next!=null) {
+			length++;
+			temp = temp.next;
+		}
+		
+		Node first =head,second=head;
+		for(int i=0;i<k;i++ ) {
+			first = first.next;
+		}
+		
+		for(int i=0;i<length-k;i++) {
+			second = second.next;
+		}
+		
+		//swap the values 
+		int data = second.data;
+		second.data = first.data;
+		first.data = data;
+		 
+		
+	}
+	
 	public static void main(String[] args) {
 		LinkedList linkedList = new LinkedList();
 		linkedList.add(2);
@@ -357,6 +384,21 @@ public class LinkedList {
 		
 //		linkedList.delete(3);
 //		linkedList.display();
+		
+		
+		LinkedList swapList = new LinkedList();
+		swapList.add(1);
+		swapList.add(2);
+		swapList.add(3);
+		swapList.add(4);
+		swapList.add(5);
+		swapList.add(6);
+		
+		swapList.display();
+		
+		swapList.swapkthNode(4);
+		
+		swapList.display();
 	}
 }
 
